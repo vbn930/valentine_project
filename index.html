@@ -172,6 +172,13 @@
             margin-top: 1rem;
             display: none;
             /* 처음엔 숨김 */
+            position: relative;
+            z-index: 100;
+            font-weight: bold;
+        }
+
+        .result-message.show {
+            display: block !important;
         }
 
         .proposal-img {
@@ -343,6 +350,7 @@
             // 결과 메시지 표시
             const resultMsg = document.getElementById('result-msg');
             resultMsg.style.display = 'block';
+            resultMsg.classList.add('show');
 
             // 폭죽 팡팡!
             const duration = 5 * 1000;
