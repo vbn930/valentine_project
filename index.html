@@ -351,19 +351,20 @@
             noBtn.style.bottom = 'auto';
         }
 
-        // 고백 수락!
+        // Result message display logic - Improved for mobile
         function acceptProposal() {
-            // 버튼 숨기기
-            document.querySelector('.proposal-buttons').style.display = 'none';
-            // 결과 메시지 표시
-            const resultMsg = document.getElementById('result-msg');
-            resultMsg.style.display = 'block';
-            resultMsg.classList.add('show');
+            // Completely replace content to ensure visibility
+            quizContent.innerHTML = `
+                <img src="usagi.png" class="proposal-img" alt="Love Photo" style="width: 250px; animation: popIn 0.6s;">
+                <div class="result-message show" style="display: block !important; font-size: 1.8rem; margin-top: 20px;">
+                    ${successMessage}
+                </div>
+            `;
 
-            // 폭죽 팡팡!
+            // Celebration confetti!
             const duration = 5 * 1000;
             const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }; // confetti z-index 0
 
             function random(min, max) {
                 return Math.random() * (max - min) + min;
@@ -377,7 +378,7 @@
                 }
 
                 const particleCount = 50 * (timeLeft / duration);
-                // 양쪽에서 폭죽 발사
+
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
                 confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
             }, 250);
