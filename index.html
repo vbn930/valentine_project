@@ -40,6 +40,14 @@
             max-width: 400px;
             position: relative;
             transition: transform 0.3s ease;
+            z-index: 10;
+            /* 폭죽보다 위에 오게 설정 */
+            min-height: 400px;
+            /* 내용이 바뀌어도 크기 유지 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
